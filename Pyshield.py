@@ -7,13 +7,13 @@ def obfuscate_python(program, key):
     
     encoded = base64.b64encode(obfuscated_program.encode()).decode()
     
-    obfuscated_code = '__FOLLOW_MALWAREKID___FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__ = ""\n'
+    obfuscated_code = '__JKJK__ = ""\n'
     for i in range(0, len(encoded), 10):
         chunk = encoded[i:i+10]
         hex_chunk = ''.join(['\\x{:02x}'.format(ord(c)) for c in chunk])
-        obfuscated_code += '__FOLLOW_MALWAREKID___FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__ += "{}"\n'.format(hex_chunk)
+        obfuscated_code += '__JKJK__ += "{}"\n'.format(hex_chunk)
     
-    obfuscated_code += 'exec("".join(chr(ord(c) ^ {}) for c in __import__("base64").b64decode(__FOLLOW_MALWAREKID___FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__FOLLOW_MALWAREKID__).decode()))'.format(key)
+    obfuscated_code += 'exec("".join(chr(ord(c) ^ {}) for c in __import__("base64").b64decode(__JKJK__).decode()))'.format(key)
     return obfuscated_code
 
 
@@ -24,17 +24,17 @@ def main():
         pink_color = "\033[38;2;255;69;172m"
         reset = "\033[0m"
         banner = f'''
-{pink_color}    ____        ____                      __            
-   / __ \__  __/ __/_  ________________ _/ /_____  _____
-  / /_/ / / / / /_/ / / / ___/ ___/ __ `/ __/ __ \/ ___/
- / ____/ /_/ / __/ /_/ (__  ) /__/ /_/ / /_/ /_/ / /    
-/_/    \__, /_/  \__,_/____/\___/\__,_/\__/\____/_/     
-      /____/                                            
-                                        By @malwarekid  
+{pink_color}   ____        ____      __       __     __     _     
+   / __ \__  __/ __/_  __/ /___ _/ /__  / /__  (_)____
+  / /_/ / / / / /_/ / / / / __ `/ / _ \/ / _ \/ / ___/
+ / ____/ /_/ / __/ /_/ / / /_/ / /  __/ /  __/ (__  ) 
+/_/    \__, /_/  \__,_/_/\__,_/_/\___/_/\___/_/____/  
+      /____/                                             
+                                        By JK  
 {reset}'''
         print(banner)
         
-        print(Fore.CYAN + "Welcome to Pyfuscator!")
+        print(Fore.CYAN + "Welcome to Pyshield!")
         
         python_code = input(Fore.YELLOW + "Enter your python code to obfuscate (leave empty for program path): " + Style.RESET_ALL)
         if not python_code:
@@ -45,9 +45,9 @@ def main():
             with open(program_path, 'r') as file:
                 python_code = file.read()
         
-        obfuscated_program_name = input(Fore.YELLOW + "Enter your obfuscated program name (default obfuscate.py): " + Style.RESET_ALL)
+        obfuscated_program_name = input(Fore.YELLOW + "Enter your obfuscated program name (default HiddenSnake.py): " + Style.RESET_ALL)
         if not obfuscated_program_name:
-            obfuscated_program_name = "obfuscate.py"
+            obfuscated_program_name = "HiddenSnake.py"
         
         key = 0x7F
         
